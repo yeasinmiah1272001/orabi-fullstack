@@ -1,5 +1,3 @@
-import React from "react";
-
 const SectionTitle = ({ title, subtitle, center }) => {
   return (
     <div className={`my-8 ${center ? "text-center" : "text-left"}`}>

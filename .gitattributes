@@ -1,2 +1,0 @@
-*.filetype filter=lfs diff=lfs merge=lfs -text
-*.largefile filter=lfs diff=lfs merge=lfs -text

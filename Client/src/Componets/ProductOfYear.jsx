@@ -5,12 +5,14 @@ const ProductOfYear = () => {
   return (
     <Container>
       <div className="relative flex items-center justify-center">
+        {/* Product Image */}
         <img
           className="w-full h-auto"
           src={productOfTheYear}
           alt="Product of the Year"
         />
 
+        {/* Overlay Text and Button */}
         <div className="absolute top-0 right-0 mt-10 md:mt-16 lg:mt-20 mr-4 md:mr-8 lg:mr-16 p-6 rounded-lg hidden md:block">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
             Product Of The Year
