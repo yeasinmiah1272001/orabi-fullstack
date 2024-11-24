@@ -13,7 +13,9 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle the menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const token = localStorage.getItem("token");
+  console.log("token", token);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen); // Toggle the menu on click
@@ -75,10 +77,18 @@ const Header = () => {
             </Link>
 
             {/* User Icon */}
-            <FaUser
-              size={30}
-              className="text-gray-700 hover:text-blue-600 cursor-pointer transition-all"
-            />
+            {token ? (
+              <Link to="/profile">
+                <h1>Profile</h1>
+              </Link>
+            ) : (
+              <Link to="/signin">
+                <FaUser
+                  size={30}
+                  className="text-gray-700 hover:text-blue-600 cursor-pointer transition-all"
+                />
+              </Link>
+            )}
           </div>
         </div>
       </Container>

@@ -14,6 +14,9 @@ import { Provider } from "react-redux";
 import { store } from "./Redux/store.js";
 import toast, { Toaster } from "react-hot-toast";
 import CartPage from "./Pages/CartPage.jsx";
+import Signin from "./Pages/Signin.jsx";
+import Signup from "./Pages/Signup.jsx";
+import Profile from "./Pages/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +54,18 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <CartPage />,
+      },
+      {
+        path: "/signin",
+        element: <Signin />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },
