@@ -19,6 +19,7 @@ const createToken = (user) => {
 const userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
+    // console.log("body", req.body);
     if (!email) {
       return res.json({ success: false, message: "pleace email is requred" });
     }
@@ -30,6 +31,7 @@ const userLogin = async (req, res) => {
     }
 
     const user = await usermodel.findOne({ email });
+    // console.log("user", user);
     if (!user) {
       return res.json({ success: false, message: "user does not exit" });
     }
@@ -52,8 +54,10 @@ const userLogin = async (req, res) => {
 const userRegister = async (req, res) => {
   try {
     const { name, email, password, isAdmin } = await req.body;
+    // console.log("body", req.body);
 
     const existinguser = await usermodel.findOne({ email });
+    // console.log("exis", existinguser);
     if (!name) {
       return res.json({ success: false, message: "pleace name is requred" });
     }
@@ -74,7 +78,7 @@ const userRegister = async (req, res) => {
       });
     }
     if (existinguser) {
-      // cheak user
+      // cheack user
       return res.json({ success: true, message: "user already exit" });
     }
 
@@ -95,7 +99,7 @@ const userRegister = async (req, res) => {
       password: encryptPassword,
       isAdmin,
     });
-
+    // console.log("user", newUser);
     // save database
     await newUser.save();
 
@@ -112,6 +116,7 @@ const userRegister = async (req, res) => {
 const addmiinLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
+    // console.log("body", req.body);
     if (!email) {
       return res.json({ success: false, message: "pleace email is requred" });
     }
@@ -123,6 +128,7 @@ const addmiinLogin = async (req, res) => {
     }
 
     const user = await usermodel.findOne({ email });
+    // console.log("user", user);
     if (!user) {
       return res.json({ success: false, message: "user does not exit" });
     }
@@ -163,7 +169,7 @@ const updateUser = async (req, res) => {
     const { _id, name, email, password, isAdmin } = await req.body;
     const user = await usermodel.findById(_id);
 
-    console.log("body", req.body);
+    // console.log("body", req.body);
     if (!user) {
       return res.json({ success: false, message: "user not found" });
     }

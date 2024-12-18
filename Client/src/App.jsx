@@ -4,6 +4,7 @@ import SelesBanner from "./Componets/SelesBanner";
 import ProductOfYear from "./Componets/ProductOfYear";
 import NewArrival from "./Componets/NewArrival";
 import CategorySection from "./Componets/CategorySection";
+import Collection from "./Componets/Collection";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <ProductOfYear />
       <CategorySection />
       <NewArrival />
+      <Collection />
     </main>
   );
 };

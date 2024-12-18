@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Container from "./Container";
 import SectionTitle from "./SectionTitle";
 import axios from "axios";
 import ProductCard from "./ProductCard";
+import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const NewArrival = () => {
   const [product, setProduct] = useState([]);
@@ -29,9 +33,60 @@ const NewArrival = () => {
     fetchData();
   }, []);
 
+  const sliderRef = useRef(null);
+
+  const next = () => {
+    sliderRef.current?.slickNext();
+  };
+
+  const previous = () => {
+    sliderRef.current?.slickPrev();
+  };
+
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+        },
+      },
+    ],
+  };
+
   return (
     <Container>
       <SectionTitle title={"New Arrival"} />
+      <div className="flex justify-end gap-10 items-center">
+        <button
+          onClick={previous}
+          className="bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-700 transition duration-300"
+        >
+          <FaArrowCircleLeft size={30} />
+        </button>
+        <button
+          onClick={next}
+          className="bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-700 transition duration-300"
+        >
+          <FaArrowCircleRight size={30} />
+        </button>
+      </div>
 
       {loading ? (
         <div className="flex justify-center items-center h-40">
@@ -39,15 +94,23 @@ const NewArrival = () => {
           <p className="ml-3 text-blue-600 text-lg">Loading...</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Slider
+          ref={sliderRef}
+          {...settings}
+          className="space-x-6" // Tailwind gap between cards
+        >
           {product.length > 0 ? (
-            product.map((item) => <ProductCard item={item} key={item._id} />)
+            product.map((item) => (
+              <div key={item._id} className="p-2">
+                <ProductCard item={item} />
+              </div>
+            ))
           ) : (
             <p className="col-span-full text-center text-gray-500">
               No new arrivals found.
             </p>
           )}
-        </div>
+        </Slider>
       )}
     </Container>
   );
