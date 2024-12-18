@@ -5,18 +5,19 @@ import ProductOfYear from "./Componets/ProductOfYear";
 import NewArrival from "./Componets/NewArrival";
 import CategorySection from "./Componets/CategorySection";
 import Collection from "./Componets/Collection";
+import SpecialCollection from "./Componets/SpecialCollection";
 
 const App = () => {
   return (
     <main className="">
       <Banner />
-
-      <SelesBanner />
+      <SpecialCollection />
 
       <ProductOfYear />
       <CategorySection />
       <NewArrival />
       <Collection />
+      <SelesBanner />
     </main>
   );
 };

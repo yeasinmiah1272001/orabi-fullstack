@@ -6,16 +6,16 @@ import banner2 from "../assets/images/banner/2.jpg";
 
 const Collection = () => {
   return (
-    <Container>
+    <Container className={" lg:h-[450px]"}>
       <SectionTitle title={"New Collection"} />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 grid-rows-2 lg:grid-rows-6 gap-4">
         {/* First Banner */}
-        <div className="col-span-1 sm:col-span-2 lg:col-span-3 row-span-1 lg:row-span-4 relative">
+        <div className="col-span-1 overflow-hidden group transition  sm:col-span-2 lg:col-span-3 row-span-1 lg:row-span-4 relative">
           <img
             src={banner1}
             alt="Girls Collection"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover duration-300 group-hover:scale-110 transition-transform"
           />
           <div className="absolute inset-0 flex flex-col justify-center items-start p-4 text-black">
             <h1 className="text-black text-lg sm:text-xl lg:text-2xl font-bold mb-3 text-left w-full sm:w-3/4">
@@ -28,11 +28,11 @@ const Collection = () => {
         </div>
 
         {/* Second Banner */}
-        <div className="col-span-1 sm:col-span-2 lg:col-span-3 row-span-1 lg:row-span-4 relative">
+        <div className="col-span-1 overflow-hidden group transition  sm:col-span-2 lg:col-span-3 row-span-1 lg:row-span-4 relative">
           <img
             src={banner2}
             alt="Spring Collection"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover duration-300 group-hover:scale-110 transition-transform"
           />
           <div className="absolute inset-0 flex flex-col justify-center items-start p-4 text-black">
             <h1 className="text-black text-2lg sm:text-xl lg:text-xl font-bold mb-3 text-left w-full sm:w-3/4">
